@@ -7,10 +7,19 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href={{ url_for('static', filename='style.css') }}>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     </head>
     <body>
         <h1>
             Bananas are tasty
         </h1>
+        <h2>
+            Interactive Graph
+            <div id="myDiv" style="width:100%;height:500px;"></div>
+        </h2>
+        <script>
+            var graphJSON = {{ graphJSON | safe }};
+            Plotly.newPlot('myDiv', graphJSON.data, graphJSON.layout);
+        </script>
     </body>
 </html>
